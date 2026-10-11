@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 8 - Azure Static Web App</title>
+</head>
+<body>
+    <main>
+        <h1>Sistemas Operativos - Guía #8</h1>
+        <p>Respuesta de la API de Azure Functions: <b id="message">Cargando...</b></p>
+    </main>
+
+    <script>
+    (async function() {
+        try {
+            const res = await fetch('/api/message');
+            const data = await res.json();
+            document.querySelector('#message').textContent = data.text;
+        } catch (e) {
+            document.querySelector('#message').textContent = 'Error al conectar con la API';
+        }
+    }());
+    </script>
+</body>
+</html>
